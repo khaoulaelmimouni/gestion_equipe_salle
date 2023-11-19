@@ -1,0 +1,10 @@
+{% extends 'playground/base.html' %}
+
+{% block content %}
+    <h1>Détails de l'équipe: {{ sallee.id_salle }}</h1>
+    <p>Capacite: {{ sallee.capacite }}</p>
+    <p>occupe: {{ sallee.occupe }}</p>
+    <a href="{% url 'modify_salle' sallee.id_sallee %}">Modifier cette salle</a>
+    <p>  <a href="{% url 'delete_sallee' sallee.id_salle %}">Supprimer cette salle</a></p>
+
+{% endblock %}

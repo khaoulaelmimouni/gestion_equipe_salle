@@ -1,0 +1,10 @@
+{% extends 'playground/base.html' %}
+
+{% block content %}
+    <h1>Détails de l'équipe: {{ equipe.id_equipe }}</h1>
+    <p>Situation: {{ equipe.situation }}</p>
+    <p>adversaire: {{ equipe.adversaire }}</p>
+    <a href="{% url 'modify_equipe' equipe.id_equipe %}">Modifier cette Équipe</a>
+    <p>  <a href="{% url 'delete_equipe' equipe.id_equipe %}">Supprimer cette Équipe</a></p>
+
+{% endblock %}

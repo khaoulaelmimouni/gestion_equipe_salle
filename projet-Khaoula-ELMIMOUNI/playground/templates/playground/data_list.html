@@ -1,0 +1,45 @@
+{% extends 'playground/base.html' %}
+
+{% block content %}
+<h1 style="font-family: 'Lobster', sans-serif;">Liste des salles</h1>
+        <div class="card-container">
+            {% for sallee in salles %}
+            <div class="card">
+                <h2><h2><a href="{% url 'detail_salle' id_salle=sallee.id_salle %}">{{ sallee.id_salle }}</a></h2></h2>
+                <p>ID: {{ sallee.id_salle }}</p>
+                <p>Capacité: {{ sallee.capacite }}</p>
+                <p>Occupé: {{ sallee.occupe }}</p>
+                {% if sallee.image %}
+        <img src="{{ sallee.image.url }}" alt="Image de {{ sallee.id_salle }}">
+    {% endif %}
+            </div>
+            {% endfor %}
+            
+                <a href="{% url 'create_salle' %}"><button>Ajouter une salle</button></a>
+            
+        </div>
+        
+
+        <h1 style="font-family: 'Lobster', sans-serif;">Liste des Équipes</h1>
+        <div class="card-container">
+            
+            {% for equipe in equipes %}
+            <div class="card">
+                <h2><a href="{% url 'detail_equipe' id_equipe=equipe.id_equipe %}">{{ equipe.id_equipe }}</a></h2>
+                
+                <p>ID: {{ equipe.id_equipe }}</p>
+                <p>Situation: {{ equipe.situation }}</p>
+                <p>Lieu (salle): {{ equipe.lieu.id_salle }}</p>
+                {% if equipe.adversaire %}
+                    <p>Adversaire: {{ equipe.adversaire.id_equipe }}</p>
+                {% endif %}
+                {% if equipe.logo %}
+        <img src="{{ equipe.logo.url }}" alt="Logo de {{ equipe.id_equipe }}" style="width: 200px; height: 200px;">
+    {% endif %}
+            </div>
+            {% endfor %}
+            
+                <a href="{% url 'create_equipe' %}"><button>Ajouter une équipe</button></a>
+            
+        
+{% endblock %}
